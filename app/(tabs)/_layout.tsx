@@ -6,6 +6,8 @@ import { Pressable } from "react-native";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -32,7 +34,7 @@ export default function TabLayout() {
         options={{
           title: "Lofi Alarm",
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="heart-o" color={color} />
+            <Ionicons name="alarm" size={24} color={color} />
           ),
           headerRight: () => (
             <Link href="/modal" asChild>
@@ -56,6 +58,15 @@ export default function TabLayout() {
           title: "Clock",
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="clock-o" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="three"
+        options={{
+          title: "HelpMeSleep",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="sleep" size={24} color={color} />
           ),
         }}
       />

@@ -127,6 +127,11 @@ export default function TabTwoScreen() {
           : { backgroundColor: "white" },
       ]}
     >
+      <Image
+        source={{ uri: "https://i.giphy.com/3HHYwcq9QPde6AHwXT.webp" }}
+        style={{ width: 250, height: 150, position: "absolute", bottom: "0%" }}
+      />
+
       <AnalogClock />
 
       <Text
@@ -141,10 +146,6 @@ export default function TabTwoScreen() {
       >
         {currentTime}
       </Text>
-      <Image
-        source={require("../../assets/images/coffe.gif")}
-        style={{ width: 80, height: 80, position: "absolute", top: "35%" }}
-      />
     </View>
   );
 }

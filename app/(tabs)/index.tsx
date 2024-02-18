@@ -188,21 +188,31 @@ export default function TabOneScreen() {
       />
       <FlatList
         data={alarms}
-        style={{ width: "100%" }}
+        style={{ width: "100%", padding: 20 }}
         keyExtractor={(item) => item?.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.alarmItem}>
-            <View style={{ flexDirection: "column", alignItems: "center" }}>
-              <Text style={styles.alarmTime}>
-                {item.time.toLocaleTimeString().slice(0, 4)}{" "}
-                {item.time.toLocaleTimeString().slice(-2)}
+            <View style={{ flexDirection: "column" }}>
+              <Text
+                style={[
+                  {
+                    fontSize: 32,
+                    fontWeight: "bold",
+                  },
+                  isDarkTheme ? { color: "white" } : { color: "black" },
+                ]}
+              >
+                {item.time.toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </Text>
               <Text style={styles.alarmLabel}>{item.label}</Text>
             </View>
             <Switch
               trackColor={{ false: "#767577", true: "#81b0ff" }}
-              thumbColor={item.enabled ? "#f5dd4b" : "#f4f3f4"}
-              ios_backgroundColor="#3e3e3e"
+              thumbColor={item.enabled ? "#e3e9ed" : "#e3e9ed"}
+              ios_backgroundColor="#e3e9ed"
               onValueChange={() => toggleAlarm(item.id)}
               value={item.enabled}
             />
@@ -271,15 +281,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    marginVertical: 10,
     paddingHorizontal: 20,
     paddingVertical: 10,
+    borderTopWidth: 1,
+    borderTopColor: "#333", // Divider color
     borderBottomWidth: 1,
     borderBottomColor: "#333", // Divider color
-  },
-  alarmTime: {
-    color: "#fff",
-    fontSize: 32,
-    fontWeight: "bold",
+    borderRightWidth: 1,
+    borderRightColor: "#333",
+    borderLeftWidth: 1,
+    borderLeftColor: "#333",
+    borderRadius: 10,
   },
   alarmLabel: {
     color: "#aaa", // Light gray for secondary text
